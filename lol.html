@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Savvy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Balsamiq+Sans:700&amp;display=swap" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="./style.css?1" />
+    <link rel="shortcut icon" href="stuff/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body translate="no" onclick="play()">
+    <div class='og'>
+        <button onclick="play_first()">trust me</button>
+    </div>
+    <audio id="music">
+      <source src="stuff/a.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="text" onclick="play()" center>
+        <div>
+            S
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div class="fill">S</div>
+            <div>S</div>
+        </div>
+        <div>
+            a
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+        </div>
+        <div>
+            a
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+            <div class="fill">a</div>
+        </div>
+        <div>
+            v
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+            <div class="fill">v</div>
+        </div>
+        <div>
+            y
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+            <div class="fill">y</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var myMusic = document.getElementById("music");
+    var i = 0;
+
+    window.setInterval(() => {
+        document.getElementsByTagName("body")[0].style.background = colorText(1000, 0, i++, 200);
+    }, 30);
+
+    function play_first() {
+        var x = document.getElementsByClassName("og")[0];
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        play();
+        play();
+
+    }
+
+    function play() {
+        if (myMusic.paused) {
+            myMusic.volume = 0.5;
+            myMusic.play();
+            i += 200;
+
+        } else {
+            myMusic.pause();
+        }
+    }
+
+    function RGB2Color(r, g, b) {
+        return 'rgb(' + Math.round(r) + ',' + Math.round(g) + ',' + Math.round(b) + ')';
+    }
+
+    function colorText(s, phase, i, c) {
+        if (phase == undefined) phase = 0;
+        center = c;
+        width = 55;
+        frequency = (Math.PI * 2) / s;
+        var red = Math.sin(frequency * i + 2 + phase) * width + center;
+        var green = Math.sin(frequency * i + 0 + phase) * width + center;
+        var blue = Math.sin(frequency * i + 4 + phase) * width + center;
+        console.log(i, RGB2Color(red, green, blue));
+        return RGB2Color(red, green, blue);
+
+    };
+</script>
+
+</html>
